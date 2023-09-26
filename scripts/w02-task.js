@@ -5,7 +5,7 @@
 /* Step 2 - Variables */
 let fullName = 'Emily Cordero';
 var currentYear = new Date(); 
-var profilePicture = '/images/profilePicture.jpg'
+var profilePicture = 'images/profilePicture.jpg'
 /* Step 3 - Element Variables */
 const nameElement = document.getElementById('name');
 const foodElement = document.getElementById('food');
