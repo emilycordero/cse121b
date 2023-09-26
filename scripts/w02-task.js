@@ -5,7 +5,7 @@
 /* Step 2 - Variables */
 let fullName = 'Emily Cordero';
 var currentYear = new Date(); 
-var profilePicture = 'C:\Users\Corde\OneDrive\Desktop\cse121b\images\profilePicture.jpg'
+var profilePicture = '/images/profilePicture.jpg'
 /* Step 3 - Element Variables */
 const nameElement = document.getElementById('name');
 const foodElement = document.getElementById('food');
@@ -14,16 +14,18 @@ const imageElement = document.querySelector('img');
 
 /* Step 4 - Adding Content */
 nameElement.innerHTML = `<strong>${fullName}</strong>`;
-textContent.setAttribute = `${currentYear}`;
-imageElement.setAttribute('images/profilePicture.jpg', profilePicture);
+yearElement.textContent = `${currentYear}`;
 imageElement.setAttribute('src', profilePicture);
 imageElement.setAttribute('alt', `Profile image of ${fullName}`);
 
 
 /* Step 5 - Array */
-const foods = ['enchiladas', 'costillas de puerco', 'beans'];
+const food = ['enchiladas', 'costillas de puerco', 'beans', 'egg'];
+foodElement.innerHTML = `${food}`;
+const favFood = ', cheese';
+foodElement.innerHTML += `<br>${food + favFood}`
+food.pop(0)
+foodElement.innerHTML += `<br>${food}`
+food.pop(3)
+foodElement.innerHTML += `<br>${food}`
 
-foodElement.innerHTML = `<br> ${foods}`;
-
-const newFoods = foods.push('chicken', 'beef', 'veggies');
-foodElement.innerHTML += `<br> ${newFoods}`;
