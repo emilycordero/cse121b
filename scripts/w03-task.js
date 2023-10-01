@@ -1,65 +1,70 @@
-let shipHealth = 3;
-let shipAmmo = 3;
-let targetHealth = 3;
-function isHit() {
-  // should return true if a randomly generated number is greater than .5, false if it is less than .5
-  let random = Math.random(0,1);
-  if (random > 0) {
-      random = true
-      return random;
-  } else {
-      random = false
-      return random;
-  }
+/* LESSON 3 - Programming Tasks */
 
-  // return Math.random() > 0.5;
+/* FUNCTIONS */
+/* Function Definition - Add Numbers */
+function add (number1, number2){
+    return number1 + number2;
 }
+function addNumbers() {
+    let addNumber1 = Number(document.querySelector('#add1').value);
+    let addNumber2 = Number(document.querySelector('#add2').value);
+    document.querySelector('#sum').value = add(addNumber1, addNumber2);
+}
+document.querySelector('#addNumbers').addEventListener('click', addNumbers);
 
-function shipCanFire() {
-  // return true if the ships health is above 0 AND ammo is above 0 false otherwise
-  if (shipAmmo > 0 && shipHealth > 0) {
-      return true;
-  } else {
-      console.log('Cannot fire.');
-  }
+/* Function Definition - Subtract Numbers */
+function subtract (number1, number2){
+    return number1 - number2;
 }
-function isDestroyed(health) {
-  // return true if health is zero or less
-  if (health <= 0){
-      return true
-  } else {
-      return false
-  }
+function subtractNumbers() {
+    let subtract1 = Number(document.querySelector('#subtract1').value);
+    let subtract2 = Number(document.querySelector('#subtract2').value);
+    document.querySelector('#difference').value = subtract(subtract1, subtract2);
 }
-function reloadShip() {
-  // reduce ship health by 1 and increase ammo by 3
-  shipHealth--;
-  shipAmmo += 3;
-}
-function fireShip() {
-  if (shipCanFire()) {
-    shipAmmo--;
-    if (isHit()) {
-      targetHealth--;
-      console.log("hit - targetHealth:", targetHealth);
-    } else {
-      console.log("miss");
-    }
-  } else {
-    reloadShip();
-    console.log("reloading, shipHealth:", shipHealth);
-  }
-}
-function encounter() {
-  console.log("You see a target");
-  if (!isDestroyed(targetHealth) && !isDestroyed(shipHealth)) {
-    fireShip();
-    if (isDestroyed(targetHealth)) {
-      console.log("Target eliminated");
-    }
-    if (isDestroyed(shipHealth)) {
-      console.log("ship destroyed");
-    }
-  }
-}
+document.querySelector('#subtractNumbers').addEventListener('click', subtractNumbers);
 
+/* Arrow Function - Multiply Numbers */
+const multiply = (number1, number2) => number1 * number2;
+
+const multiplyNumbers = () => {
+    let factor1 = Number(document.querySelector('#factor1').value);
+    let factor2 = Number(document.querySelector('#factor2').value);
+    document.querySelector('#product').value = multiply(factor1, factor2);
+}
+document.querySelector('#multiplyNumbers').addEventListener('click', multiplyNumbers);
+
+/* Open Function Use - Divide Numbers */
+const divide = (number1, number2) => number1 / number2;
+
+const divideNumbers = () => {
+    let dividend = Number(document.querySelector('#dividend').value);
+    let divisor = Number(document.querySelector('#divisor').value);
+    document.querySelector('#quotient').value = divide(dividend, divisor);
+}
+document.querySelector('#divideNumbers').addEventListener('click', divideNumbers);
+
+
+/* Decision Structure */
+var currentDate = new Date(); 
+var currentYear = currentDate.getFullYear()
+const yearElement = document.querySelector('#year');
+yearElement.textContent = `${currentYear}`;
+
+
+/* ARRAY METHODS - Functional Programming */
+/* Output Source Array */
+let numbersArray = [1,2,3,4,5,6,7,8,9,10,11,12,13];
+const numbersArrayElement = document.querySelector('#array');
+/* Output Odds Only Array */
+document.querySelector('#odds').innerHTML = numbersArray.filter(number => number % 2 == 1);
+/* Output Evens Only Array */
+document.querySelector('#evens').innerHTML = numbersArray.filter(number => number % 2 == 0);
+/* Output Sum of Org. Array */
+const sumOfArray = numbersArray.reduce((sum,number) => sum + number);
+document.querySelector('#sumOfArray').innerHTML = sumOfArray;
+/* Output Multiplied by 2 Array */
+const multiplied = numbersArray.map(number => number * 2);
+document.querySelector('#multiplied').innerHTML = multiplied;
+/* Output Sum of Multiplied by 2 Array */
+const sumOfMultiplied = (multiplied *(sumOfArray));
+document.querySelector('#sumOfMultiplied').innerHTML = sumOfMultiplied;
